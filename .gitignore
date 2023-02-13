@@ -9,3 +9,6 @@ out/
 
 # Dotenv file
 .env
+
+.DS_Store
+.vscode
