@@ -10,7 +10,7 @@ contract PureVsView {
         return x;
     }
 
-    function getY() public pure returns (uint256) {
+    function getY() public view returns (uint256) {
         return 21;
     }
 }

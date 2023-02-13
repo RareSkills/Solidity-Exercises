@@ -1,0 +1,14 @@
+beginner
+[ ] receive ether
+[ ] transfer ether
+[ ] payment splitter
+[ ] constructor
+[ ] structs
+[ ] nested mapping
+[ ] require statements
+
+intermediate 
+[ ] blockhash
+[ ] events
+[ ] selfdestruct
+[ ] tuples
