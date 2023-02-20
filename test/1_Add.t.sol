@@ -13,12 +13,6 @@ contract AddTest is Test {
 
     function testAdd() public {
         uint256 sum = add.add(1, 2);
-
         assertEq(sum, 3);
-    }
-
-    function testSetNumber(uint256 x) public {
-        //counter.setNumber(x);
-        //assertEq(counter.number(), x);
     }
 }

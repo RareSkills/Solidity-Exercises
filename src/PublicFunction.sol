@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
 
-contract Counter {
+contract PublicFunction {
     // change this code so this function
     // is callable outside the contract
     function magicNumber() private pure returns (uint256) {
