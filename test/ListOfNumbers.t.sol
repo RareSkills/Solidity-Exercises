@@ -19,8 +19,8 @@ contract ListOfNumbersTest is Test {
 
         uint256[] memory arr = listOfNumbers.getArray();
 
-        assertEq(arr[0], 11);
-        assertEq(arr[1], 22);
-        assertEq(arr[2], 33);
+        assertEq(arr[0], 11, "Expected the first item in the array to be 11");
+        assertEq(arr[1], 22, "Expected the second item in the array to be 22");
+        assertEq(arr[2], 33, "Expected the third item in the array to be 33");
     }
 }

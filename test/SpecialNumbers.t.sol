@@ -14,19 +14,35 @@ contract SpecialNumbersTest is Test {
 
     function testMakeNumberSpecial() external {
         specialNumbers.makeNumberNotSpecial(42);
-        assert(specialNumbers.isSpecial(42));
+        assertEq(
+            specialNumbers.isSpecial(42),
+            true,
+            "expected specialNumbers.isSpecial(42) to be true"
+        );
     }
 
     function testMakeNumberNotSpecial() external {
         specialNumbers.makeNumberNotSpecial(42);
         specialNumbers.makeNumberNotSpecial(42);
-        assert(!specialNumbers.isSpecial(42));
+        assertEq(
+            specialNumbers.isSpecial(42),
+            false,
+            "expected specialNumbers.isSpecial(42) to be false"
+        );
     }
 
     function testIsNumberSpecial() external {
         specialNumbers.makeNumberNotSpecial(42);
-        assert(specialNumbers.isNumberSpecial(42));
+        assertEq(
+            specialNumbers.isNumberSpecial(42),
+            true,
+            "expected specialNumbers.isNumberSpecial(42) to be true"
+        );
         specialNumbers.makeNumberNotSpecial(42);
-        assert(!specialNumbers.isNumberSpecial(42));
+        assertEq(
+            specialNumbers.isNumberSpecial(42),
+            false,
+            "expected specialNumbers.isNumberSpecial(42) to be false"
+        );
     }
 }

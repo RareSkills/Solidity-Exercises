@@ -13,6 +13,10 @@ contract PublicFunctionTest is Test {
     }
 
     function testMagicNumber() external {
-        assertEq(publicFunction.magicNumber(), 42);
+        assertEq(
+            publicFunction.magicNumber(),
+            42,
+            "expected publicFunction.magicNumber() to return 42"
+        );
     }
 }

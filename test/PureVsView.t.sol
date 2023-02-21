@@ -13,10 +13,18 @@ contract PureVsViewTest is Test {
     }
 
     function testGetX() external {
-        assertEq(pureVsView.getX(), 24);
+        assertEq(
+            pureVsView.getX(),
+            24,
+            "expected (pureVsView.getX() to return 24"
+        );
     }
 
     function testGetY() external {
-        assertEq(pureVsView.getY(), 42);
+        assertEq(
+            pureVsView.getY(),
+            42,
+            "expected (pureVsView.getY() to return 42"
+        );
     }
 }

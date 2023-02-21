@@ -18,9 +18,9 @@ contract FizzBuzzTest is Test {
         string memory res3 = fizzBuzz.fizzBuzz(15);
         string memory res4 = fizzBuzz.fizzBuzz(17);
 
-        assertEq(res1, "fizz");
-        assertEq(res2, "buzz");
-        assertEq(res3, "fizz buzz");
-        assertEq(res4, "");
+        assertEq(res1, "fizz", "expected res1 to beturn 'fizz'");
+        assertEq(res2, "buzz", "expected res2 to beturn 'buzz'");
+        assertEq(res3, "fizz buzz", "expected res3 to beturn 'fizz buzz'");
+        assertEq(res4, "", "expected res4 to beturn ''");
     }
 }

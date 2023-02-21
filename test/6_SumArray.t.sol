@@ -26,6 +26,6 @@ contract SumArrayTest is Test {
         arr[9] = 27;
 
         uint256 x = sumArray.sumArray(arr);
-        assertEq(x, 67252142);
+        assertEq(x, 67252142, "expected sum of arr to be 67252142");
     }
 }

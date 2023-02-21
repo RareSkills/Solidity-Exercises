@@ -13,6 +13,6 @@ contract AddTest is Test {
 
     function testAdd() public {
         uint256 sum = add.add(1, 2);
-        assertEq(sum, 3);
+        assertEq(sum, 3, "expected sum to return 3");
     }
 }

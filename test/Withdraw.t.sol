@@ -17,6 +17,10 @@ contract WithdrawTest is Test {
         (bool success, ) = address(withdraw).call{value: 1 ether}("");
         require(success, "send ether failed");
         withdraw.withdraw();
-        assertEq(address(this).balance, 1 ether);
+        assertEq(
+            address(this).balance,
+            1 ether,
+            "expected address(this).balance to be 1 ether"
+        );
     }
 }

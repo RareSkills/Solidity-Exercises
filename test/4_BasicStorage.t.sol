@@ -17,12 +17,12 @@ contract BasicStorageTest is Test {
         uint256 x = uint256(
             vm.load(address(basicStorage), bytes32(uint256(0)))
         );
-        assertEq(x, 42);
+        assertEq(x, 42, "expected x in storage to be 42 after setX(42)");
     }
 
     function testGetX() external {
         basicStorage.setX(42);
         uint256 x = basicStorage.getX();
-        assertEq(x, 42);
+        assertEq(x, 42, "getX() to return 42 after setX(42)");
     }
 }
