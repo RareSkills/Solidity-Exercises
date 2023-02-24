@@ -26,5 +26,9 @@ contract SumArrayTest is Test {
 
         uint256 x = sumArray.sumArray(arr);
         assertEq(x, 67252142, "expected sum of arr to be 67252142");
+
+        uint256[] memory arr2 = new uint256[](0);
+        uint256 x2 = sumArray.sumArray(arr2);
+        assertEq(x2, 0, "expected empty array to return 0");
     }
 }

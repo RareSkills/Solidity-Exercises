@@ -14,6 +14,11 @@ contract NotEnoughTest is Test {
 
     function testPrintNumWithFive() public {
         vm.expectRevert();
-        notEnough.printNumber(5);
+        notEnough.largeEnough(5);
+
+        vm.expectRevert();
+        notEnough.largeEnough(10);
+
+        notEnough.largeEnough(11);
     }
 }

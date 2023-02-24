@@ -20,6 +20,6 @@ contract FizzBuzzTest is Test {
         assertEq(res1, "fizz", "expected res1 to beturn 'fizz'");
         assertEq(res2, "buzz", "expected res2 to beturn 'buzz'");
         assertEq(res3, "fizz buzz", "expected res3 to beturn 'fizz buzz'");
-        assertEq(res4, "", "expected res4 to beturn ''");
+        assertEq(res4, "", "expected res4 to return ''");
     }
 }

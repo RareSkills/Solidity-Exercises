@@ -11,6 +11,10 @@ contract Destroyer {
 
     constructor() payable {}
 
+    function destroy(address taker) external {
+        // your code here
+    }
+
     function getBalance() public view returns (uint256 balance) {
         balance = address(this).balance;
     }
