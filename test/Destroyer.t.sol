@@ -20,7 +20,7 @@ contract DestroyerTest is Test {
 
         destroyer.destroy(address(this));
 
-        uint bal = destroyer.getBalance();
+        uint256 bal = destroyer.getBalance();
         emit log_named_uint("Destroyer balance after", bal);
         assertEq(bal, 0);
     }

@@ -7,12 +7,19 @@ import "../src/StudentDB.sol";
 contract StudentDBTest is Test {
     StudentDB public studentDB;
 
+    struct Student {
+        string name;
+        uint256 age;
+    }
+
     function setUp() public {
         studentDB = new StudentDB();
     }
 
-    function testGetJohnsAge() public {
-        uint32 johnsAge = studentDB.getJohnsAge();
-        assertEq(johnsAge, 12);
+    function testGetEntireStruct() public {
+        Student memory data = studentDB.getEntireStruct();
+
+        assertEq(data.name, "John", "expected name to be John");
+        assertEq(data.age, 12, "expected age to be 12");
     }
 }

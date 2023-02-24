@@ -11,8 +11,18 @@ contract AddTest is Test {
         add = new Add();
     }
 
-    function testAdd() public {
-        uint256 sum = add.add(1, 2);
-        assertEq(sum, 3, "expected sum to return 3");
+    // a + b == b + a
+    function testAddOne() public {
+        assertEq(add.add(1, 2), add.add(2, 1), "expected a + b to equal b + a");
+    }
+
+    // a + 0 == a
+    function testAddTwo() public {
+        assertEq(add.add(4, 0), 4, "expected a + 0 to equal a");
+    }
+
+    // a + b == c
+    function testAddThree() public {
+        assertEq(add.add(4, 2), 6, "expected a + b to equal c");
     }
 }

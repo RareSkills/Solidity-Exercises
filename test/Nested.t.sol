@@ -15,7 +15,6 @@ contract NestedTest is Test {
 
     function testNestedDetails() public returns (bool) {
         bool val = nested.returnNestedDetails(msg.sender, 10);
-        assertEq(val, true);
-        return val;
+        assertEq(val, true, "expected val to be true");
     }
 }

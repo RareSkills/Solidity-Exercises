@@ -9,10 +9,15 @@ contract Nested {
         4. use the 'returnNestedDetails' function to return the values of a nested data
     */
 
-    function setNestedDetails(address _addr, uint256 _num) public {}
+    function setNestedDetails(address _addr, uint256 _num) public {
+        // your code here
+    }
 
-    function returnNestedDetails(
-        address _addr,
-        uint256 _num
-    ) public view returns (bool) {}
+    function returnNestedDetails(address _addr, uint256 _num)
+        public
+        view
+        returns (bool)
+    {
+        // your code here
+    }
 }
