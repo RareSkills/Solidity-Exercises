@@ -4,7 +4,7 @@ pragma solidity ^0.8.13;
 contract StudentDB {
     /* This exercise assumes you know how structs works.
    create a struct `Student` for a student who's name is `John` and age is `12`.
-   Return John's age in the function below*/
+   Return John's age in the function below */
 
     struct Student {
         string name;
