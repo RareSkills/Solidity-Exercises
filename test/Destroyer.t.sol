@@ -3,25 +3,25 @@ pragma solidity ^0.8.17;
 
 import "forge-std/Test.sol";
 import "forge-std/console.sol";
-import "../src/Destroyer.sol";
+import "../src/SelfDestroyer.sol";
 
-contract DestroyerTest is Test {
-    Destroyer public destroyer;
+contract SelfDestroyerTest is Test {
+    SelfDestroyer public selfDestroyer;
 
     function setUp() public {
-        destroyer = new Destroyer{value: 10 ether}();
+        selfDestroyer = new SelfDestroyer{value: 10 ether}();
     }
 
-    function testDestroyer() public {
+    function testSelfDestroyer() public {
         emit log_named_uint(
-            "Destroyer balance before",
-            address(destroyer).balance
+            "Self Destroyer balance before",
+            address(selfDestroyer).balance
         );
 
-        destroyer.destroy(address(this));
+        selfDestroyer.destroy(address(this));
 
-        uint256 bal = destroyer.getBalance();
-        emit log_named_uint("Destroyer balance after", bal);
+        uint256 bal = selfDestroyer.getBalance();
+        emit log_named_uint("Self Destroyer balance after", bal);
         assertEq(bal, 0);
     }
 }

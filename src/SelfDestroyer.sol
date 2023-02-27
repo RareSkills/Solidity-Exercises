@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: BUSL-1.1
 pragma solidity ^0.8.13;
 
-contract Destroyer {
+contract SelfDestroyer {
     /* This exercise assumes you know the selfdestruct function works.
         1. The contract has some ether in it, 
         destroy the contract and send all ether to an address 
