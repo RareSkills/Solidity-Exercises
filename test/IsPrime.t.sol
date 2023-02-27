@@ -19,6 +19,6 @@ contract IsPrimeTest is Test {
         assertEq(isPrime.isPrime(16), false, "16 isn't a prime number");
         assertEq(isPrime.isPrime(23), true, "23 is a prime number");
         assertEq(isPrime.isPrime(101), true, "101 is a prime number");
-        assertEq(isPrime.isPrime(202), false, "202 in'ts a prime number");
+        assertEq(isPrime.isPrime(202), false, "202 isn't a prime number");
     }
 }
