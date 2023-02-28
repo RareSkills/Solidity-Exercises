@@ -2,6 +2,8 @@
 pragma solidity ^0.8.13;
 
 contract BasicBankV2 {
+    /// used to store the balance of users
+    ///     USER    =>  BALANCE
     mapping(address => uint256) public balances;
 
     /// @notice deposit ether into the contract
@@ -9,7 +11,6 @@ contract BasicBankV2 {
     function addEther() external payable {}
 
     /// @notice used to withdraw ether from the contract
-    /// @param amount of ether to remove. Cannot execeed balance.
-    /// user cannot withdraw more than they deposited
+    /// @param amount of ether to remove. Cannot execeed balance i.e users cannot withdraw more than they deposited
     function removeEther(uint256 amount) external payable {}
 }

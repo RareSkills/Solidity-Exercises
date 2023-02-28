@@ -2,22 +2,22 @@
 pragma solidity ^0.8.17;
 
 import "forge-std/Test.sol";
-import "../src/Distribute.sol";
+import "../src/DistributeV2.sol";
 
 contract DistributeV2Test is Test {
-    Distribute public distribute;
+    DistributeV2 public distributeV2;
     ReluctantReceiver public reluctantReceiver;
 
     function setUp() public {
-        distribute = new Distribute{value: 4 ether}();
+        distributeV2 = new DistributeV2{value: 4 ether}();
         reluctantReceiver = new ReluctantReceiver();
     }
 
     function testDistributeEther() public {
         assertEq(
-            address(distribute).balance,
+            address(distributeV2).balance,
             4 ether,
-            "balance of distribute contract is not 4 ether"
+            "balance of distributeV2 contract is not 4 ether"
         );
 
         address[] memory addresses = new address[](4);
@@ -26,7 +26,7 @@ contract DistributeV2Test is Test {
         addresses[2] = address(0xBed);
         addresses[3] = address(reluctantReceiver);
 
-        distribute.distributeEther(addresses);
+        distributeV2.distributeEther(addresses);
 
         assertEq(
             addresses[0].balance,
@@ -50,9 +50,9 @@ contract DistributeV2Test is Test {
         );
 
         assertEq(
-            address(distribute).balance,
+            address(distributeV2).balance,
             1 ether,
-            "balance of distribute contract is not 0 ether"
+            "balance of distributeV2 contract is not 0 ether"
         );
     }
 }
