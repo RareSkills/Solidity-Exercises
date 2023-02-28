@@ -12,10 +12,18 @@ contract TicTacToeTest is Test {
     }
 
     function testIsWinning() external {
-        uint8[3][3] calldata board = [[1, 1, 0], [0, 1, 0], [1, 0, 1]];
+        uint8[3][3] memory board = [[1, 1, 0], [0, 1, 0], [1, 0, 1]];
 
         bool isWinning = tictactoe.isWinning(board);
 
         assertEq(isWinning, true, "expected isWinning to be true");
+    }
+
+    function testIsLosing() external {
+        uint8[3][3] memory board = [[0, 1, 0], [0, 1, 0], [1, 0, 1]];
+
+        bool isWinning = tictactoe.isWinning(board);
+
+        assertFalse(isWinning, "expected isWinning to be false");
     }
 }

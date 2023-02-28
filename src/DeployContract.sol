@@ -4,7 +4,7 @@ pragma solidity ^0.8.13;
 contract Deployer {
     /*
         This exercise assumes you know how to deploy a contract.
-        1. Create a contract with an empty constructor.
+        1. Create an empty contract.
         2. Deploy the contract and return the address in `deployContract` function.
     */
 
