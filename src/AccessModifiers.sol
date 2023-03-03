@@ -3,7 +3,7 @@ pragma solidity ^0.8.13;
 
 // You may not modify this contract
 contract Parent {
-    uint256 internal _value;
+    uint256 private _value;
 }
 
 contract Child is Parent {
