@@ -1,18 +1,23 @@
 # Solidity Exercises
+
 This is a set of exercises created by [RareSkills](https://www.rareskills.io) so you can learn Solidity by doing bite-sized exercises.
 
 ## Installation
+
 Install foundry
+
 ```
 curl -L https://foundry.paradigm.xyz | bash
 ```
 
 Clone this repository
+
 ```
 git clone https://github.com/rareSkills/solidity-exercises.git
 ```
 
 Complete the exercises in order and test with
+
 ```
 forge test --mc <Problem Name>
 ```
