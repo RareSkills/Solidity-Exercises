@@ -11,10 +11,23 @@ contract ContractImmutableTest is Test {
 
     function testContractImmutable() external {
         uint256 startGas = gasleft();
-        address(new ContractImmutable(10));
+        contractImmutable = new ContractImmutable(10);
         uint256 gasUsed = startGas - gasleft();
 
-        if (gasUsed < 50000) assertFalse(false);
+        assertEq(contractImmutable.value(), 10, "expected value to be 10");
+
+        if (gasUsed < 90000) assertFalse(false);
+        else assertFalse(true);
+    }
+
+    function testContractImmutable2() external {
+        uint256 startGas = gasleft();
+        contractImmutable = new ContractImmutable(550);
+        uint256 gasUsed = startGas - gasleft();
+
+        assertEq(contractImmutable.value(), 550, "expected value to be 550");
+
+        if (gasUsed < 90000) assertFalse(false);
         else assertFalse(true);
     }
 }
