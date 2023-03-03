@@ -19,7 +19,8 @@ git clone https://github.com/rareSkills/solidity-exercises.git
 Complete the exercises in order and test with
 
 ```
-forge test --mc <Problem Name>
+cd <Problem Name>
+forge test -vvv
 ```
 
 for example, open `src/1_Add` and change the code so it compiles. The solution is
