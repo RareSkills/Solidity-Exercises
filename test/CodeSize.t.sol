@@ -12,12 +12,14 @@ contract CodeSizeTest is Test {
     }
 
     function testCodeSize() public {
-        assert(
+        assertEq(
             address(codeSize).code.length > 1024,
+            true,
             "Contract must be greater than 1kb"
         );
-        assert(
+        assertEq(
             address(codeSize).code.length < 4096,
+            true,
             "Contract must be less than 4kb"
         );
     }
