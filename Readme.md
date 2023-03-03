@@ -34,5 +34,5 @@ for example, open `src/1_Add` and change the code so it compiles. The solution i
 Save your changes, then test it with
 
 ```
-forge test --mc 1_Add
+forge test -vvv
 ```
