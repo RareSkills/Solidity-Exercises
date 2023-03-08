@@ -23,7 +23,7 @@ cd <Problem Name>
 forge test -vvv
 ```
 
-for example, open `src/1_Add` and change the code so it compiles. The solution is
+for example, in the Add/ directory, open `src/Add.sol` and change the code so it compiles. The solution is
 
 ```solidity
     function add(uint256 a, uint256 b) public pure returns (uint256) {
@@ -31,7 +31,7 @@ for example, open `src/1_Add` and change the code so it compiles. The solution i
     }
 ```
 
-Save your changes, then test it with
+Save your changes, then, in the same directory, test it with
 
 ```
 forge test -vvv
