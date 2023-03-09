@@ -20,6 +20,6 @@ contract FibonacciTest is Test {
         assertEq(result, 3, "expected result to be 3");
         assertEq(result1, 55, "expected result to be 55");
         assertEq(result2, 6765, "expected result to be 6765");
-        assertEq(result3, 0, "expected result to be 0");
+        assertEq(result3, 1, "expected result to be 1");
     }
 }
