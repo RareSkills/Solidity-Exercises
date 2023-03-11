@@ -21,14 +21,14 @@ contract InsertInArrayTest is Test {
 
         insertInArray.replaceAtIndex(4, 200);
         assertEq(
-            insertInArray.arr(2),
+            insertInArray.arr(4),
             200,
             "expected array at index 4 to be 200"
         );
 
         insertInArray.replaceAtIndex(9, 100);
         assertEq(
-            insertInArray.arr(2),
+            insertInArray.arr(9),
             100,
             "expected array at index 9 to be 100"
         );
