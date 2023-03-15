@@ -22,4 +22,6 @@ contract WithdrawTest is Test {
             "expected address(this).balance to be 1 ether"
         );
     }
+
+    receive() external payable {}
 }
