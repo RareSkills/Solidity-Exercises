@@ -21,7 +21,7 @@ contract OneWeekLockupTest is Test {
         );
         assertEq(oneWeekLockup.balanceOf(address(this)), 1 ether);
 
-        (bool success, ) = address(oneWeekLockup).call{value: 1 ether}();
+        (bool success, ) = address(oneWeekLockup).call{value: 1 ether}("");
         require(success, "send failed");
         assertEq(
             address(oneWeekLockup).balance,
@@ -35,7 +35,7 @@ contract OneWeekLockupTest is Test {
         vm.deal(address(this), 1 ether);
         oneWeekLockup.depositEther{value: 1 ether}();
 
-        vm.hoax(address(0xDEAD));
+        hoax(address(0xDEAD));
         oneWeekLockup.depositEther{value: 1 ether}();
 
         vm.expectRevert();
