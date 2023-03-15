@@ -31,4 +31,6 @@ contract BasicBankTest is Test {
             "expected balance of address(this) to be 1 ether"
         );
     }
+
+    receive() external payable {}
 }
