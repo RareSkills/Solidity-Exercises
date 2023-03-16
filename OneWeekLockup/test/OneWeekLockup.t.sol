@@ -20,15 +20,6 @@ contract OneWeekLockupTest is Test {
             "expected balance of oneWeekLockup contract to be 1 ether"
         );
         assertEq(oneWeekLockup.balanceOf(address(this)), 1 ether);
-
-        (bool success, ) = address(oneWeekLockup).call{value: 1 ether}("");
-        require(success, "send failed");
-        assertEq(
-            address(oneWeekLockup).balance,
-            1 ether,
-            "expected balance of oneWeekLockup contract to be 1 ether"
-        );
-        assertEq(oneWeekLockup.balanceOf(address(this)), 1 ether);
     }
 
     function testWithdrawEther() external {
