@@ -26,6 +26,8 @@ contract BlockNumberTest is Test {
         vm.roll(block.number + 1);
 
         vm.prank(address(0xDEAD));
+        blockNumber.callMe();
+
         lastCaller = blockNumber.lastCaller();
         assertEq(
             lastCaller,
