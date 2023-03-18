@@ -15,6 +15,7 @@ contract TimelockEscrowTest is Test {
 
     function testTimelock() public {
         vm.deal(address(this), 1 ether);
+        vm.deal(SELLER, 1 ether);
         timelockEscrow.createBuyOrder{value: 1 ether}();
         assertEq(
             timelockEscrow.buyerDeposit(address(this)),
@@ -37,7 +38,7 @@ contract TimelockEscrowTest is Test {
         timelockEscrow.sellerWithdraw(address(this));
 
         uint256 timelockEscrowBalanceAfter = address(timelockEscrow).balance;
-        uint256 sellerAfter = address(timelockEscrow).balance;
+        uint256 sellerAfter = address(SELLER).balance;
 
         assertEq(
             timelockEscrowBalanceBefore - timelockEscrowBalanceAfter,
@@ -88,4 +89,6 @@ contract TimelockEscrowTest is Test {
             "expected 1 ether as balance change of the seller after seller withdraws"
         );
     }
+
+    receive() external payable {}
 }
