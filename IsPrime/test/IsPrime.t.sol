@@ -12,7 +12,7 @@ contract IsPrimeTest is Test {
     }
 
     function testIsPrime() public {
-        assertEq(isPrime.isPrime(1), true, "1 is a prime number");
+        assertEq(isPrime.isPrime(1), false, "1 isn't a prime number");
         assertEq(isPrime.isPrime(2), true, "2 is a prime number");
         assertEq(isPrime.isPrime(8), false, "8 isn't a prime number");
         assertEq(isPrime.isPrime(11), true, "11 is a prime number");
