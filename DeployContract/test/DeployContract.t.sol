@@ -11,7 +11,7 @@ contract DeployContractTest is Test {
         deployer = new Deployer();
     }
 
-    function testGetGreetings() external {
+    function testDeployContract() external {
         address newContract = deployer.deployContract();
 
         newContract.code.length > 0
