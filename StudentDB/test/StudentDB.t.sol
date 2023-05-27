@@ -17,7 +17,7 @@ contract StudentDBTest is Test {
     }
 
     function testGetEntireStruct() public {
-        Student memory data = studentDB.getEntireStruct();
+        StudentDB.Student memory data = studentDB.getEntireStruct();
 
         assertEq(data.name, "John", "expected name to be John");
         assertEq(data.age, 12, "expected age to be 12");
