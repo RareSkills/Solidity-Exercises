@@ -14,8 +14,6 @@ contract DeployContractTest is Test {
     function testGetGreetings() external {
         address newContract = deployer.deployContract();
 
-        newContract.code.length > 0
-            ? assertFalse(false)
-            : assertFalse(true, "newContract is not a contract");
+        assertTrue(newContract.code.length > 0, "newContract is not a contract");
     }
 }
