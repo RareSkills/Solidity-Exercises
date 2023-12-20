@@ -17,6 +17,7 @@ contract TypecastTest is Test {
 
         bool success;
 
+        vm.deal(address(this), type(uint256).max);
         assembly {
             mstore(
                 0x00,
