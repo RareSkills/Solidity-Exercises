@@ -34,6 +34,9 @@ contract TimelockEscrowTest is Test {
         uint256 timelockEscrowBalanceBefore = address(timelockEscrow).balance;
         uint256 sellerBefore = address(timelockEscrow).balance;
 
+        vm.expectRevert();
+        timelockEscrow.createBuyOrder();
+
         vm.prank(SELLER);
         timelockEscrow.sellerWithdraw(address(this));
 
@@ -72,6 +75,9 @@ contract TimelockEscrowTest is Test {
 
         uint256 timelockEscrowBalanceBefore = address(timelockEscrow).balance;
         uint256 buyerBefore = address(this).balance;
+        
+        vm.expectRevert();
+        timelockEscrow.createBuyOrder();
 
         timelockEscrow.buyerWithdraw();
 
