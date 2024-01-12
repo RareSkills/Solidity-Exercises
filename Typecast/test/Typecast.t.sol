@@ -16,11 +16,12 @@ contract TypecastTest is Test {
         typecast.typeCast{value: 1 ether}();
 
         bool success;
+        vm.deal(address(this), 500000000000000000000000000000 ether);
 
         assembly {
             mstore(
                 0x00,
-                0x3fe8e3f000000000000000000000000000000000000000000000000000000000
+                0x12e9b56d00000000000000000000000000000000000000000000000000000000
             )
             let addr := sload(typecast.slot)
             success := call(gas(), addr, addr, 0x00, 0x04, 0x00, 0x00)
