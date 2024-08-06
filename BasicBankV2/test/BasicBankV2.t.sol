@@ -34,6 +34,12 @@ contract BasicBankV2Test is Test {
             1 ether,
             "expected balance of address(this) to be 1 ether"
         );
+
+        assertEq(
+            basicBankV2.balances(address(this)),
+            0 ether,
+            "expected deposited balance of address(this) to be 0 ether"
+        );
     }
 
     receive() external payable {}
