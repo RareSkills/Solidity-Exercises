@@ -46,13 +46,13 @@ contract DistributeV2Test is Test {
         assertEq(
             addresses[3].balance,
             0,
-            "balance of address 0xBad is not 1 ether"
+            "balance of address 0xBad is not 0 ether"
         );
 
         assertEq(
             address(distributeV2).balance,
             1 ether,
-            "balance of distributeV2 contract is not 0 ether"
+            "balance of distributeV2 contract is not 1 ether"
         );
     }
 }
