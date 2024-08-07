@@ -21,10 +21,13 @@ for dir in */; do
   fi
 done
 
-echo -e "${GREEN}Success tests: $success_test_counter${NC}"
-echo -e "${RED}Failed tests: ${#failed_tests[@]}${NC}"
+echo -e "${GREEN}Successful tests: $success_test_counter${NC}"
 
 if [ ${#failed_tests[@]} -ne 0 ]; then
+  echo -e "${RED}Failed tests: ${#failed_tests[@]}${NC}"
   echo -e "Failed tests are: $(IFS=, ; echo "${failed_tests[*]}" | sed 's/,/, /g')"
   exit 1
+else
+  echo -e "${GREEN}Failed tests: 0${NC}"
+  exit 0
 fi
