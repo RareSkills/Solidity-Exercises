@@ -11,11 +11,12 @@ contract DeployContractTest is Test {
         deployer = new Deployer();
     }
 
-    function testGetGreetings() external {
+    function testDeployContract() external {
+        vm.prank(address(0xb0b));
         address newContract = deployer.deployContract();
 
-        newContract.code.length > 0
-            ? assertFalse(false)
-            : assertFalse(true, "newContract is not a contract");
+        require(newContract != address(deployer), "Cannot return `deployer` address");
+
+        newContract.code.length > 0 ? assertFalse(false) : assertFalse(true, "newContract is not a contract");
     }
 }
