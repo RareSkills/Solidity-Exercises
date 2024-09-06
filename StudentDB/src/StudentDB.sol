@@ -11,6 +11,8 @@ contract StudentDB {
         uint256 age;
     }
 
+    Student student;
+
     constructor() {
         createStudent("John", 12);
     }
