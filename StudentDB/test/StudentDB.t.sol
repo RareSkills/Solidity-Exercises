@@ -7,11 +7,6 @@ import "../src/StudentDB.sol";
 contract StudentDBTest is Test {
     StudentDB public studentDB;
 
-    struct Student {
-        string name;
-        uint256 age;
-    }
-
     function setUp() public {
         studentDB = new StudentDB();
     }
