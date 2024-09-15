@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: BUSL-1.1
 pragma solidity ^0.8.13;
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 /*
 Build two ERC20 contracts: RareCoin and SkillsCoin (you can change the name if you like).
@@ -15,60 +16,18 @@ Here is the workflow:
 Remember ERC20 tokens(aka contract) can own other ERC20 tokens. So when you call RareCoin.trade(), it should call SkillsCoin.transferFrom and transfer your SkillsCoin to itself, I.e. address(this).
 */
 
-contract SkillsCoin {
-    string public name;
-    string public symbol;
-
-    mapping(address => uint256) public balanceOf;
-    uint8 public decimals;
-    uint256 public totalSupply;
-
-    mapping(address => mapping(address => uint256)) public allowance;
-
-    constructor(string memory _name, string memory _symbol) {
+contract SkillsCoin is ERC20 {
+    constructor(string memory _name, string memory _symbol) ERC20(_name, _symbol) {
         // your code here
     }
 
     function mint(address to, uint256 amount) public {
         // your code here
     }
-
-    function transfer(address to, uint256 amount) private returns (bool) {
-        // your code here
-    }
-
-    function approve(address spender, uint256 amount) public returns (bool) {
-        // your code here
-    }
-
-    function transferFrom(address from, address to, uint256 amount) public returns (bool) {
-        // your code here
-    }
 }
 
-contract RareCoin {
-    string public name;
-    string public symbol;
-
-    mapping(address => uint256) public balanceOf;
-    uint8 public decimals;
-    uint256 public totalSupply;
-
-    mapping(address => mapping(address => uint256)) public allowance;
-
-    constructor(string memory _name, string memory _symbol, address _skillsCoin) {
-        // your code here
-    }
-
-    function transfer(address to, uint256 amount) private returns (bool) {
-        // your code here
-    }
-
-    function approve(address spender, uint256 amount) public returns (bool) {
-        // your code here
-    }
-
-    function transferFrom(address from, address to, uint256 amount) public returns (bool) {
+contract RareCoin is ERC20 {
+    constructor(string memory _name, string memory _symbol, address _skillsCoin) ERC20(_name, _symbol) {
         // your code here
     }
 
