@@ -39,5 +39,5 @@ forge test -vvv
 
 ## Test all
 ```bash
-./test.sh
+bash test.sh
 ```
