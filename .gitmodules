@@ -1,2 +1,5 @@
 [submodule "lib/forge-std"]
 	branch = v1.5.0
+[submodule "TokenExchange/lib/openzeppelin-foundry-upgrades"]
+	path = TokenExchange/lib/openzeppelin-foundry-upgrades
+	url = https://github.com/OpenZeppelin/openzeppelin-foundry-upgrades
