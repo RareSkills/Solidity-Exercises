@@ -36,3 +36,8 @@ Save your changes, then, in the same directory, test it with
 ```
 forge test -vvv
 ```
+
+## Test all
+```bash
+bash test.sh
+```
