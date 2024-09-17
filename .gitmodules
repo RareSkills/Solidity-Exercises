@@ -1,8 +1,5 @@
 [submodule "lib/forge-std"]
 	branch = v1.5.0
-[submodule "TokenExchange/lib/openzeppelin-foundry-upgrades"]
-	path = TokenExchange/lib/openzeppelin-foundry-upgrades
-	url = https://github.com/OpenZeppelin/openzeppelin-foundry-upgrades
-[submodule "TokenExchange/lib/openzeppelin-contracts-upgradeable"]
-	path = TokenExchange/lib/openzeppelin-contracts-upgradeable
-	url = https://github.com/OpenZeppelin/openzeppelin-contracts-upgradeable
+[submodule "TokenExchange/lib/openzeppelin-contracts"]
+	path = TokenExchange/lib/openzeppelin-contracts
+	url = https://github.com/OpenZeppelin/openzeppelin-contracts

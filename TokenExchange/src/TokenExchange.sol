@@ -27,8 +27,10 @@ contract SkillsCoin is ERC20 {
 }
 
 contract RareCoin is ERC20 {
+    SkillsCoin skillsCoin;
+
     constructor(string memory _name, string memory _symbol, address _skillsCoin) ERC20(_name, _symbol) {
-        // your code here
+        skillsCoin = SkillsCoin(_skillsCoin);
     }
 
     function trade(uint256 amount) public {
