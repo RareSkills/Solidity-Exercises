@@ -11,10 +11,27 @@ contract UncheckedTest is Test {
         uncheckedContract = new Unchecked();
     }
 
-    function testUnchecked() external {
-        uint256 res = uncheckedContract.getNumber(10);
-        uint256 res1 = uncheckedContract.getNumber(0);
-        uint256 res2 = uncheckedContract.getNumber(50);
-        uint256 res3 = uncheckedContract.getNumber(20);
+    function testUnchecked() public {
+        uint256 result = uncheckedContract.getNumber(10);
+        uint256 expected = type(uint256).max - 100 + 1 + 10;
+        assertEq(result, expected, "unchecked should return underflow value");
+    }
+
+    function testUnchecked2() public {
+        uint256 result = uncheckedContract.getNumber(100);
+        uint256 expected = 0;
+        assertEq(result, expected, "unchecked should return underflow value");
+    }
+
+    function testUnchecked3() public {
+        uint256 result = uncheckedContract.getNumber(0);
+        uint256 expected = type(uint256).max - 100 + 1;
+        assertEq(result, expected, "unchecked should return underflow value");
+    }
+
+    function testUnchecked4() public {
+        uint256 result = uncheckedContract.getNumber(type(uint256).max);
+        uint256 expected = type(uint256).max - 100;
+        assertEq(result, expected, "unchecked should return underflow value");
     }
 }
