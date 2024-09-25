@@ -10,18 +10,17 @@ You'll need to remove the restriction that only the owner can mint SkillsCoin.
 Here is the workflow:
 - mint() SkillsCoin to yourself
 - SkillsCoin.approve(address rareCoinAddress, uint256 yourBalanceOfSkillsCoin) RareCoin to take coins from you.
-- RareCoin.trade() This will cause RareCoin to SkillsCoin.transferFrom(address you, address RareCoin, uint256 yourBalanceOfSkillsCoin) Remember, RareCoin can known its own address with address(this)
+- RareCoin.trade() This will cause RareCoin to SkillsCoin.transferFrom(address you, address RareCoin, uint256 yourBalanceOfSkillsCoin) Remember, RareCoin can know its own address with address(this)
 - RareCoin.balanceOf(address you) should return the amount of coin you originally minted for SkillsCoin.
 
 Remember ERC20 tokens(aka contract) can own other ERC20 tokens. So when you call RareCoin.trade(), it should call SkillsCoin.transferFrom and transfer your SkillsCoin to itself, I.e. address(this).
 */
 
 contract SkillsCoin is ERC20 {
-    constructor(string memory _name, string memory _symbol) ERC20(_name, _symbol) {
-        // your code here
-    }
+    constructor(string memory _name, string memory _symbol) ERC20(_name, _symbol) {}
 
-    function mint(address to, uint256 amount) public {
+    // Mint to the caller
+    function mint(uint256 amount) public {
         // your code here
     }
 }

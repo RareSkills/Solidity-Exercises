@@ -19,51 +19,31 @@ contract TokenExchangeTest is Test {
 
     function testMintSkillsCoin() external {
         vm.prank(poorUser);
-        skillsCoin.mint(address(0), 100);
-        assertEq(
-            skillsCoin.balanceOf(poorUser),
-            100,
-            "err: poorUser must have 100 SKS"
-        );
+        skillsCoin.mint(100);
+        assertEq(skillsCoin.balanceOf(poorUser), 100, "err: poorUser must have 100 SKS");
 
         vm.prank(avgUser);
-        skillsCoin.mint(address(0), 5000);
-        assertEq(
-            skillsCoin.balanceOf(avgUser),
-            5000,
-            "err: avgUser must have 5000 SKS"
-        );
+        skillsCoin.mint(5000);
+        assertEq(skillsCoin.balanceOf(avgUser), 5000, "err: avgUser must have 5000 SKS");
 
         vm.prank(richUser);
-        skillsCoin.mint(address(0), 1 ether);
-        assertEq(
-            skillsCoin.balanceOf(richUser),
-            1 ether,
-            "err: richUser must have 1ether SKS"
-        );
+        skillsCoin.mint(1 ether);
+        assertEq(skillsCoin.balanceOf(richUser), 1 ether, "err: richUser must have 1ether SKS");
     }
 
     function testTradeRareCoin() external {
         vm.expectRevert();
         rareCoin.trade(5000);
 
-        skillsCoin.mint(address(0), 5000);
-        vm.expectRevert();
-        rareCoin.trade(5000);
+        assertEq(rareCoin.balanceOf(richUser), 0, "err: richUser must have 0 RARE before trade");
 
-        skillsCoin.approve(address(rareCoin), 5000);
-        rareCoin.trade(5000);
+        vm.startPrank(richUser, richUser);
+        skillsCoin.mint(1 ether);
+        rareCoin.trade(1 ether);
+        vm.stopPrank();
 
-        assertEq(
-            rareCoin.balanceOf(address(this)),
-            5000,
-            "err: avgUser must have 5000 RARE"
-        );
+        assertEq(rareCoin.balanceOf(richUser), 1 ether, "err: richUser must have 1ether RARE");
 
-        assertEq(
-            skillsCoin.balanceOf(avgUser),
-            0,
-            "err: avgUser must have 0 SKS after trade"
-        );
+        assertEq(skillsCoin.balanceOf(richUser), 0, "err: richUser must have 0 SKS after trade");
     }
 }
