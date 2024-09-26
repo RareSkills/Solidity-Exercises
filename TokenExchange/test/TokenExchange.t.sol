@@ -37,8 +37,9 @@ contract TokenExchangeTest is Test {
 
         assertEq(rareCoin.balanceOf(richUser), 0, "err: richUser must have 0 RARE before trade");
 
-        vm.startPrank(richUser, richUser);
+        vm.startPrank(richUser);
         skillsCoin.mint(1 ether);
+        skillsCoin.approve(address(rareCoin), 1 ether);
         rareCoin.trade(1 ether);
         vm.stopPrank();
 

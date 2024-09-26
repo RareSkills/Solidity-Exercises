@@ -1,5 +1,2 @@
 [submodule "lib/forge-std"]
 	branch = v1.5.0
-[submodule "TokenExchange/lib/openzeppelin-contracts"]
-	path = TokenExchange/lib/openzeppelin-contracts
-	url = https://github.com/OpenZeppelin/openzeppelin-contracts
