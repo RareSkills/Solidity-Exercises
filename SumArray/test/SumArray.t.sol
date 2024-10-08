@@ -68,7 +68,7 @@ contract SumArrayTest is Test {
         assertEq(
             x,
             (2 ** 128) + (2 ** 42) + (2 ** 200),
-            "expected sum of large numbers to match (2 ** 128) + (2 ** 42) + (2 ** 200)"
+            "expected sum of large numbers to match 1606938044258990275542302374708083540985666368394622650023936"
         );
     }
 
