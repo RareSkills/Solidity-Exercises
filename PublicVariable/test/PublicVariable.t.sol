@@ -15,7 +15,7 @@ contract PublicVariableTest is Test {
         assertEq(
             publicVariable.number(),
             42,
-            "expected publicVariable.magicNumber() to return 42"
+            "expected publicVariable.number() to return 42"
         );
     }
 }
