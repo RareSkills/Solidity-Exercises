@@ -12,49 +12,47 @@ contract TupledoreTest is Test {
         tupledore = new Tupledore();
     }
 
-    function testTupledore() public {
-        tupledore.setTuple(address(0xDEAD), 42);
-        bool success;
-        address tupledoreAddress = address(tupledore);
-        address addr;
-        uint256 num;
-        assembly {
-            let fmp := mload(0x40)
-            mstore(fmp, hex"39009482")
-            success := call(
-                gas(),
-                tupledoreAddress,
-                0x00,
-                fmp,
-                0x04,
-                add(0x20, fmp),
-                0x40
-            )
-            addr := mload(add(0x20, fmp))
-            num := mload(add(0x40, fmp))
-        }
+    function testSetAndReturnTuple() public {
+        // Initial state check: ensure userInfo is uninitialized.
+        (address addr, uint256 num) = tupledore.returnTuple();
+        assertEq(addr, address(0), "Initial address should be address(0)");
+        assertEq(num, 0, "Initial ID should be 0");
 
-        assertEq(addr, address(0xDEAD));
-        assertEq(num, 42);
+        tupledore.setTuple(address(0xDEAD), 42);
+        (addr, num) = tupledore.returnTuple();
+        assertEq(addr, address(0xDEAD), "Address should be 0xDEAD");
+        assertEq(num, 42, "ID should be 42");
 
         tupledore.setTuple(address(0xCAFE), 24);
-        assembly {
-            let fmp := mload(0x40)
-            mstore(fmp, hex"39009482")
-            success := call(
-                gas(),
-                tupledoreAddress,
-                0x00,
-                fmp,
-                0x04,
-                add(0x20, fmp),
-                0x40
-            )
-            addr := mload(add(0x20, fmp))
-            num := mload(add(0x40, fmp))
-        }
+        (addr, num) = tupledore.returnTuple();
+        assertEq(addr, address(0xCAFE), "Address should be 0xCAFE");
+        assertEq(num, 24, "ID should be 24");
+    }
 
-        assertEq(addr, address(0xCAFE));
-        assertEq(num, 24);
+    function testSetTupleWithZeroAddress() public {
+        // Test edge case with address(0)
+        tupledore.setTuple(address(0), 123);
+        (address addr, uint256 num) = tupledore.returnTuple();
+        assertEq(addr, address(0), "Address should be address(0)");
+        assertEq(num, 123, "ID should be 123");
+    }
+
+    function testSetTupleWithLargeUint() public {
+        // Test edge case with maximum uint256 value
+        tupledore.setTuple(address(0xDEAD), type(uint256).max);
+        (address addr, uint256 num) = tupledore.returnTuple();
+        assertEq(addr, address(0xDEAD), "Address should be 0xDEAD");
+        assertEq(num, type(uint256).max, "ID should be max uint256 value");
+    }
+
+    function testSetTupleWithDifferentValues() public {
+        // Test multiple calls with different values in a row
+        tupledore.setTuple(address(0xAAAA), 1);
+        tupledore.setTuple(address(0xBBBB), 2);
+        tupledore.setTuple(address(0xCCCC), 3);
+
+        (address addr, uint256 num) = tupledore.returnTuple();
+        assertEq(addr, address(0xCCCC), "Address should be 0xCCCC");
+        assertEq(num, 3, "ID should be 3");
     }
 }
