@@ -15,7 +15,7 @@ contract PureVsViewTest is Test {
         assertEq(
             pureVsView.getX(),
             24,
-            "expected (pureVsView.getX() to return 24"
+            "expected (pureVsView.getX()) to return 24"
         );
     }
 
@@ -23,7 +23,7 @@ contract PureVsViewTest is Test {
         assertEq(
             pureVsView.getY(),
             42,
-            "expected (pureVsView.getY() to return 42"
+            "expected (pureVsView.getY()) to return 42"
         );
     }
 }
