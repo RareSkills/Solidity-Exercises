@@ -79,4 +79,78 @@ contract NestedArrayTest is Test {
 
         assertEq(nestedArray.getNestedSum(), 1200, "expected sum to be 1200");
     }
+
+    // Test case for empty array
+    function testEmptyArray() external {
+        uint256[] memory _newArr = new uint256[](0);
+        newArr.push(_newArr);
+        nestedArray.setArr(newArr);
+        assertEq(
+            nestedArray.getNestedSum(),
+            0,
+            "Expected sum to be 0 for an empty array"
+        );
+    }
+
+    // Test case for empty inner arrays
+    function testEmptyInnerArray() external {
+        uint256[] memory _newArr = new uint256[](0);
+        newArr.push(_newArr);
+        newArr.push(_newArr);
+        newArr.push(_newArr);
+
+        nestedArray.setArr(newArr);
+        assertEq(
+            nestedArray.getNestedSum(),
+            0,
+            "Expected sum to be 0 when all inner arrays are empty"
+        );
+    }
+
+    // Test case for one-dimensional array
+    function test1DArray() external {
+        uint256[] memory _newArr = new uint256[](3);
+        _newArr[0] = 1;
+        _newArr[1] = 2;
+        _newArr[2] = 3;
+        newArr.push(_newArr);
+
+        nestedArray.setArr(newArr);
+        assertEq(
+            nestedArray.getNestedSum(),
+            6,
+            "Expected sum to be 6 for a one-dimensional array"
+        );
+    }
+
+    // Test case for single value in the nested array
+    function testSingleValue() external {
+        uint256[] memory _newArr = new uint256[](1);
+        _newArr[0] = 1;
+        newArr.push(_newArr);
+
+        nestedArray.setArr(newArr);
+        assertEq(
+            nestedArray.getNestedSum(),
+            1,
+            "Expected sum to be 1 for a single value in the nested array"
+        );
+    }
+
+    // Test case for large numbers
+    function testLargeNumbers() external {
+        uint256[] memory _newArr = new uint256[](3);
+        _newArr[0] = 1 << 250;
+        _newArr[1] = 1 << 255;
+        _newArr[2] = 1;
+
+        newArr.push(_newArr);
+
+        nestedArray.setArr(newArr);
+        assertEq(
+            nestedArray.getNestedSum(),
+            2 ** 250 + 2 ** 255 + 1,
+            "Expected sum to be 59705296012991163265278789145104702486842335843220915832845316754080207470593 for large numbers"
+        );
+    }
 }
