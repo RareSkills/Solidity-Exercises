@@ -32,7 +32,7 @@ contract OneWeekLockupTest is Test {
         vm.expectRevert();
         oneWeekLockup.withdrawEther(1 ether);
 
-        vm.warp(7 days + 1);
+				skip(7 days + 1);
 
         vm.expectRevert();
         oneWeekLockup.withdrawEther(2 ether);
