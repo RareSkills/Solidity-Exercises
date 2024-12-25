@@ -14,8 +14,9 @@ contract TimelockEscrow {
         seller = msg.sender;
     }
 
-    // creates a buy order between msg.sender and seller
+    
     /**
+     * creates a buy order between msg.sender and seller
      * escrows msg.value for 3 days which buyer can withdraw at anytime before 3 days but afterwhich only seller can withdraw
      * should revert if an active escrow still exist or last escrow hasn't been withdrawn
      */
@@ -31,7 +32,7 @@ contract TimelockEscrow {
     }
 
     /**
-     * allowa buyer to withdraw at anytime before the end of the escrow (3 days)
+     * allows buyer to withdraw at anytime before the end of the escrow (3 days)
      */
     function buyerWithdraw() external {
         // your code here
