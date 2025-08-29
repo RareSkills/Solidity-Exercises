@@ -6,9 +6,11 @@ contract BasicStorage {
 
     function setX(uint256 newValue) public {
         // your code here
+        x = newValue;
     }
 
     function getX() public view returns (uint256) {
         // your code here
+        return x;
     }
 }

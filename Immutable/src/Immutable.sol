@@ -7,7 +7,7 @@ pragma solidity ^0.8.13;
 */
 
 contract ContractImmutable {
-    uint256 public value;
+    uint256 immutable public value;
 
     constructor(uint256 _value) {
         value = _value;

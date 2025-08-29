@@ -9,5 +9,6 @@ contract InsertInArray {
      */
     function replaceAtIndex(uint256 index, uint256 newValue) public {
         // your code here
+        arr[index]=newValue;
     }
 }

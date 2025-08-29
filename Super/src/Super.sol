@@ -14,10 +14,12 @@ contract Super is HelloWorld {
         1. Create a function `getGreetings` that returns the value in 
            `greetings` function.
     */
-
+   
     function greetings() public pure override returns (string memory) {
         return "Hi there!";
     }
-
+     function getGreetings()public pure returns(string memory){
+        return super.greetings();
+     }
     // your code here
 }

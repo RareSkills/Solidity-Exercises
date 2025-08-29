@@ -4,6 +4,12 @@ pragma solidity ^0.8.13;
 // You may modify this contract
 contract Parent {
     uint256 private _value;
+    function setValue_Parent(uint256 value)internal virtual returns(uint256){
+         _value = value;
+    }
+    function getValue_P()internal view virtual returns(uint256){
+        return _value;
+    }
 }
 
 contract Child is Parent {
@@ -14,10 +20,10 @@ contract Child is Parent {
     */
 
     function setValue(uint256 newValue) public {
-        _value = newValue;
+        setValue_Parent(newValue);
     }
 
-    function getValue() public view returns (uint256) {
-        return _value;
+    function getValue() public view   returns (uint256) {
+        return getValue_P();
     }
 }

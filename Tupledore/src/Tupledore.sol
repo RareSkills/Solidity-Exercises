@@ -12,4 +12,20 @@ contract Tupledore {
         4. Create a function called `returnTuple`, 
            that returns `userInfo` (as a tuple)
     */
+      struct UserInfo{
+         address userAddress;
+         uint256 UserNumber;
+      }
+
+      UserInfo userInfo;
+
+      function setTuple(address _userAddress,uint256 _number) public {
+         userInfo.userAddress = _userAddress;
+         userInfo.UserNumber = _number;
+      }
+
+      function returnTuple()public view returns(address,uint256){
+            return (userInfo.userAddress,userInfo.UserNumber);
+      }
+
 }
