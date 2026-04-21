@@ -6,98 +6,52 @@ import "../src/ReducingPayout.sol";
 
 contract ReducingPayoutTest is Test {
     ReducingPayout public reducingPayout;
+    uint256 constant INITIAL_BALANCE = 1 ether;
+    uint256 constant TOTAL_DURATION = 1 days;
+    address constant USER = address(0xbed);
 
     function setUp() public {
         vm.warp(0);
-        reducingPayout = new ReducingPayout{value: 1 ether}();
+        reducingPayout = new ReducingPayout{value: INITIAL_BALANCE}();
     }
 
-    function testWithdraw() external {
-        vm.startPrank(address(0xbed));
+    function _verifyWithdrawAt(uint256 warpTime, uint256 expectedAmount) internal {
+        // Prepare state
+        vm.warp(warpTime);
+        uint256 initialUserBalance = USER.balance;
 
-        vm.warp(7200);
-        // At 2 hours
-        uint256 amountExpected = block.timestamp >= 86400
-            ? 0
-            : 1 ether - ((block.timestamp * 0.0011574 ether) / 100);
-
+        vm.startPrank(USER);
         reducingPayout.withdraw();
-
-        if (
-            address(0xbed).balance <= amountExpected &&
-            address(0xbed).balance > amountExpected - 0.000001 ether
-        ) {
-            assertFalse(false);
-        } else {
-            assertFalse(true);
-        }
-
         vm.stopPrank();
+
+        // Check whether balance matches within 1 wei tolerance due to integer division
+        assertApproxEqAbs(
+            USER.balance - initialUserBalance,
+            expectedAmount,
+            1,
+            string.concat("Assertion failed at warpTime: ", vm.toString(warpTime))
+        );
     }
 
-    function testWithdraw1() external {
-        vm.startPrank(address(0xbed));
-
-        vm.warp(600);
-        // At 10 minutes
-        uint256 amountExpected = block.timestamp >= 86400
-            ? 0
-            : 1 ether - ((block.timestamp * 0.0011574 ether) / 100);
-
-        reducingPayout.withdraw();
-
-        if (
-            address(0xbed).balance <= amountExpected &&
-            address(0xbed).balance > amountExpected - 0.000001 ether
-        ) {
-            assertFalse(false);
-        } else {
-            assertFalse(true);
-        }
-
-        vm.stopPrank();
+    function testWithdraw_At10Minutes() external {
+        _verifyWithdrawAt(10 minutes, 993055555555555555);
     }
 
-    function testWithdraw2() external {
-        vm.startPrank(address(0xbed));
-
-        vm.warp(21600);
-        // At 6 hours
-        uint256 amountExpected = block.timestamp >= 86400
-            ? 0
-            : 1 ether - ((block.timestamp * 0.0011574 ether) / 100);
-
-        reducingPayout.withdraw();
-
-        if (
-            address(0xbed).balance <= amountExpected &&
-            address(0xbed).balance > amountExpected - 0.000001 ether
-        ) {
-            assertFalse(false);
-        } else {
-            assertFalse(true);
-        }
-
-        vm.stopPrank();
+    function testWithdraw_At2Hours() external {
+        _verifyWithdrawAt(2 hours, 916666666666666666);
     }
 
-    function testWithdraw3() external {
-        vm.startPrank(address(0xbed));
-
-        vm.warp(86400);
-        // At 24 hours
-        uint256 amountExpected = block.timestamp >= 86400
-            ? 0
-            : 1 ether - ((block.timestamp * 0.0011574 ether) / 100);
-
-        reducingPayout.withdraw();
-
-        if (address(0xbed).balance <= amountExpected) {
-            assertFalse(false);
-        } else {
-            assertFalse(true);
-        }
-
-        vm.stopPrank();
+    function testWithdraw_At6Hours() external {
+        _verifyWithdrawAt(6 hours, 0.75 ether);
     }
+
+    function testWithdraw_At24Hours() external {
+        _verifyWithdrawAt(24 hours, 0);
+    }
+
+    function testWithdraw_At24Hours1Second() external {
+        _verifyWithdrawAt(24 hours + 1 seconds, 0);
+    }
+
 }
+
