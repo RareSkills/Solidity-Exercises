@@ -10,24 +10,21 @@ contract ContractImmutableTest is Test {
     function setUp() public {}
 
     function testContractImmutable() external {
-        uint256 startGas = gasleft();
         contractImmutable = new ContractImmutable(10);
-        uint256 gasUsed = startGas - gasleft();
-
-        assertEq(contractImmutable.value(), 10, "expected value to be 10");
-
-        if (gasUsed < 90000) assertFalse(false);
-        else assertFalse(true);
+        bytes32 slot0 = vm.load(address(contractImmutable), bytes32(uint256(0)));
+        // since `value` is immutable, it won't be in storage
+        assertEq(slot0, bytes32(0));
+        assertEq(contractImmutable.value(), 10);
     }
 
     function testContractImmutable2() external {
-        uint256 startGas = gasleft();
         contractImmutable = new ContractImmutable(550);
-        uint256 gasUsed = startGas - gasleft();
-
-        assertEq(contractImmutable.value(), 550, "expected value to be 550");
-
-        if (gasUsed < 90000) assertFalse(false);
-        else assertFalse(true);
+        bytes32 slot0 = vm.load(address(contractImmutable), bytes32(uint256(0)));
+        // since `value` is immutable, it won't be in storage
+        assertEq(slot0, bytes32(0));
+        assertEq(contractImmutable.value(), 550);
     }
-}
+
+        
+    }
+
